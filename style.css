@@ -3,3 +3,12 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+
+body {
+    background-color: #010165;
+  }
+
+#door1 {
+    cursor: pointer;
+}
