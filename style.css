@@ -9,6 +9,7 @@ body {
     background-color: #010165;
   }
 
-#door1 {
+.door-frame {
     cursor: pointer;
+    padding: 10px;
 }
