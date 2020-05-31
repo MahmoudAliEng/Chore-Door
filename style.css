@@ -7,7 +7,13 @@
 
 body {
     background-color: #010165;
+    /* background-color: wheat; */
   }
+
+.header {
+    background-color: #00ffff;
+    text-align: center;
+}
 
 .door-frame {
     cursor: pointer;
