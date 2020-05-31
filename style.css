@@ -66,5 +66,11 @@ body {
     margin-bottom: 21px;
     padding-top: 18px;
     text-align: center;
-    width: 120px;
+    display: inline-block;
+    word-wrap: break-word;
+}
+
+.start-container {
+    display: flex;
+    margin: 0 auto;
 }
