@@ -9,6 +9,9 @@ const startButton = document.getElementById('start');
 // Number of closed doors in the game (dynamic number)
 let numClosedDoors = 3;
 
+// To capture the current state of playing
+let currentlyPlaying = true;
+
 // Varibials to control which door should be opened
 let openDoor1, openDoor2, openDoor3;
 
@@ -18,16 +21,23 @@ const botDoorPath = 'https://s3.amazonaws.com/codecademy-content/projects/chore-
 const beachDoorPath = 'https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/beach.svg'; // link to the 2nd opened door
 const spaceDoorPath = 'https://s3.amazonaws.com/codecademy-content/projects/chore-door/images/space.svg'; // link to the 3rd opened door
 
+// To check if a given door is the bot door or not
+const isBot = door => door.src === botDoorPath
+
 // To check if a given door is clicked or not (to avoid cheating)
 const isClicked = door => !(door.src === closedDoorPath)
     
 
 // Control the closed doors
-const playDoor = () => {
+const playDoor = door => {
     numClosedDoors--;
     if(numClosedDoors === 0) {
         gameOver('win');
-    }
+    } else 
+        if (isBot(door)){
+            gameOver();
+        }
+    
 }
 
 // Randomly choose a door to hide the bot image behind it
@@ -53,37 +63,41 @@ const randomChoreDoorGenerator = () => {
 // onclick event handler for door 1
 doorImage1.onclick = event => {
     // Test if the door was not opened yet
-    if( !isClicked(event.target)){
+    if(currentlyPlaying && !isClicked(event.target)){
         event.target.src = openDoor1;
         event.target.alt = ' Door 1 is opened now!';
-        playDoor();
+        playDoor(doorImage1);
     }
 }
 
 // onclick event handler for door 2
 doorImage2.onclick = event  => {
     // Test if the door was not opened yet
-    if(!isClicked(event.target)){
+    if(currentlyPlaying && !isClicked(event.target)){
         event.target.src = openDoor2;
         event.target.alt = ' Door 2 is opened now!';
-        playDoor();
+        playDoor(doorImage2);
     }
 }
 
 // onclick event handler for door 3
 doorImage3.onclick = event  => {
     // Test if the door was not opened yet
-    if(!isClicked(event.target)){
+    if(currentlyPlaying && !isClicked(event.target)){
         event.target.src = openDoor3;
         event.target.alt = ' Door 3 is opened now!';
-        playDoor();
+        playDoor(doorImage3);
     }
 }
 
 const gameOver = status => {
+    
     if(status === 'win') {
         startButton.innerHTML = 'You win! Play again?';
+    } else {
+        startButton.innerHTML = 'Game over! Play again?';
     }
+    currentlyPlaying = false;
 }
 
 randomChoreDoorGenerator();
