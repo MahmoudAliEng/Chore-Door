@@ -2,7 +2,7 @@
 
 Welcome 👋 to this basic game : **Chore Door Game** 🚪. It consists of 3 closed doors, you should find the *Bot Door* after opening all the 3 doors (find the *Bot Door* lastly).
 
-Below a short demonstration :100:
+Below a short demonstration :100: visit the game <a href="https://chore-door.now.sh/">**here**</a>
 
 <img src="./imgs/Chore-Door.gif">
 
